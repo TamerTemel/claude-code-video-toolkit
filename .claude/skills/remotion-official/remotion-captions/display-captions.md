@@ -29,7 +29,7 @@ Use the [Basic Captions](https://www.remotion.dev/elements/captions/basic-captio
 
 Alternatives are available at [Remotion Captions Elements](https://www.remotion.dev/elements/captions), but use Basic Captions unless there are more precise specifications.
 
-Fetch its source code from https://www.remotion.dev/elements/captions/basic-captions.md and copy the `basic-captions.tsx` file into the project unchanged.
+Fetch its source code from https://www.remotion.dev/elements/captions/basic-captions.md and save it as `basic-captions.element.tsx` in the project unchanged.
 
 ## Displaying captions alongside video content
 
@@ -54,7 +54,7 @@ Give the caption area a width and position it over the video. In this
 import { Video } from "@remotion/media";
 import { TransitionSeries } from "@remotion/transitions";
 import { staticFile, useVideoConfig } from "remotion";
-import { BasicCaptions } from "./basic-captions";
+import { BasicCaptions } from "./basic-captions.element";
 
 export const MyComposition: React.FC = () => {
   const { fps } = useVideoConfig();
@@ -65,18 +65,15 @@ export const MyComposition: React.FC = () => {
         name="Opening"
         trimBefore={4 * fps}
         durationInFrames={20 * fps}
-        premountFor={fps}
       >
         <Video
           name="Opening footage"
           src={staticFile("opening.mp4")}
-          premountFor={fps}
           objectFit="cover"
           style={{ width: "100%", height: "100%" }}
         />
         <BasicCaptions
           name="Opening captions"
-          premountFor={fps}
           width={900}
           style={{
             position: "absolute",
@@ -105,18 +102,15 @@ export const MyComposition: React.FC = () => {
         name="Next clip"
         trimBefore={1 * fps}
         durationInFrames={5 * fps}
-        premountFor={fps}
       >
         <Video
           name="Next footage"
           src={staticFile("next.mp4")}
-          premountFor={fps}
           objectFit="cover"
           style={{ width: "100%", height: "100%" }}
         />
         <BasicCaptions
           name="Next captions"
-          premountFor={fps}
           width={900}
           style={{
             position: "absolute",

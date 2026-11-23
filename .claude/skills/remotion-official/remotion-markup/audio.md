@@ -7,6 +7,12 @@ metadata:
 
 # Using audio in Remotion
 
+Use audio supplied by the user or generated with their chosen tools.
+Save local audio files in `public/` and reference them with `staticFile()`, or pass a remote URL to `<Audio>`.
+
+When scene timing follows the audio, measure each file with [getAudioDuration](../remotion-multimedia/get-audio-duration.md) and use [calculateMetadata](calculate-metadata.md) to set the composition duration.
+Account for [transition overlaps](transitions.md#calculating-total-composition-duration) when calculating the total duration.
+
 ## Prerequisites
 
 First, the @remotion/media package needs to be installed.
@@ -149,10 +155,10 @@ Use `loop` to loop the audio indefinitely:
 ```tsx
 import { Audio } from "@remotion/media";
 
-<Audio src={staticFile("audio.mp3")} loop premountFor={fps} />
+<Audio src={staticFile("audio.mp3")} loop />
 ```
 
-Put `name`, `from`, `loop`, `volume`, and `premountFor` directly on `<Audio>`.
+Put `name`, `from`, `loop`, and `volume` directly on `<Audio>`.
 
 ```tsx
 import { Audio } from "@remotion/media";
